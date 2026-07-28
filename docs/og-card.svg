@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Link-preview artwork. Export to a 1200x630 PNG at og-card.png — crawlers do not
+       render SVG. Any browser screenshot or `rsvg-convert og-card.svg -o og-card.png`
+       will do; there is no build step to hook this into. -->
+  <rect width="1200" height="630" fill="#071a2d"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#a8192e"/>
+
+  <text x="90" y="200" font-family="Iowan Old Style, Palatino, Georgia, serif"
+        font-size="96" fill="#f3ecdd" letter-spacing="14">POLITEIA</text>
+  <text x="97" y="250" font-family="Iowan Old Style, Palatino, Georgia, serif"
+        font-size="34" font-style="italic" fill="#8fa3b5" letter-spacing="4">πολιτεία</text>
+
+  <text x="90" y="345" font-family="Iowan Old Style, Palatino, Georgia, serif"
+        font-size="40" fill="#ded5c2">An instrument for locating yourself in the</text>
+  <text x="90" y="398" font-family="Iowan Old Style, Palatino, Georgia, serif"
+        font-size="40" fill="#ded5c2">Western political tradition.</text>
+
+  <!-- The diverging-bar motif, echoing the results page. -->
+  <g>
+    <rect x="90"  y="470" width="1020" height="3" fill="#293b4a"/>
+    <rect x="430" y="463" width="170"  height="17" fill="#f3ecdd"/>
+    <rect x="90"  y="518" width="1020" height="3" fill="#293b4a"/>
+    <rect x="600" y="511" width="250"  height="17" fill="#f3ecdd"/>
+    <rect x="90"  y="566" width="1020" height="3" fill="#293b4a"/>
+    <rect x="330" y="559" width="270"  height="17" fill="#f3ecdd"/>
+    <rect x="599" y="450" width="2"    height="136" fill="#a8192e"/>
+  </g>
+
+  <text x="1110" y="200" text-anchor="end" font-family="-apple-system, Segoe UI, sans-serif"
+        font-size="20" fill="#8fa3b5" letter-spacing="3">116 STATEMENTS · 91 TRADITIONS</text>
+</svg>

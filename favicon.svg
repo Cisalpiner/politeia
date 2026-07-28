@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- The instrument's own signature: diverging bars about a red centre line.
+       Legible at 16px, which rules out anything with a letterform. -->
+  <rect width="32" height="32" fill="#071a2d"/>
+  <rect x="6"  y="8"  width="10" height="3.5" fill="#f3ecdd"/>
+  <rect x="16" y="14.25" width="8" height="3.5" fill="#f3ecdd"/>
+  <rect x="9"  y="20.5" width="7" height="3.5" fill="#f3ecdd"/>
+  <rect x="15.25" y="4" width="1.5" height="24" fill="#a8192e"/>
+</svg>

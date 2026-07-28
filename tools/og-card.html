@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Politeia — og:card rasteriser</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 2rem; background: #f3ecdd; color: #171717; }
+  canvas { max-width: 100%; border: 1px solid #cfc5b4; display: block; margin: 1rem 0; }
+  code { background: #faf6eb; padding: .2em .4em; }
+</style>
+</head>
+<body>
+
+<h1>og:card rasteriser</h1>
+<p>Crawlers do not render SVG, so the link-preview image has to be a PNG. This page
+draws <code>docs/og-card.svg</code> onto a canvas at 1200&times;630 and offers it as a
+download. There is no build step and no dependency — the browser is the renderer.</p>
+
+<p><b>To regenerate after editing the SVG:</b> open this page, click the button, and save
+the result as <code>og-card.png</code> in the repository root.</p>
+
+<button id="go">Render and save</button>
+<div id="status"></div>
+<canvas id="c" width="1200" height="630"></canvas>
+
+<script type="module">
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const status = document.getElementById('status');
+
+/** Rasterise the SVG. Returns a data URL; also exposed for tooling to read. */
+async function render() {
+  const svgText = await (await fetch('../docs/og-card.svg')).text();
+  const blob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  try {
+    const img = new Image();
+    await new Promise((res, rej) => {
+      img.onload = res;
+      img.onerror = () => rej(new Error('SVG failed to load'));
+      img.src = url;
+    });
+    // Fonts inside the SVG are resolved by the browser at draw time, so give the
+    // document a moment to have them ready before rasterising.
+    if (document.fonts?.ready) await document.fonts.ready;
+    ctx.clearRect(0, 0, 1200, 630);
+    ctx.drawImage(img, 0, 0, 1200, 630);
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+  return canvas.toDataURL('image/png');
+}
+
+window.renderOgCard = render;
+
+/** Save via the dev server's write endpoint, falling back to a browser download. */
+export async function save() {
+  const dataUrl = await render();
+  const b64 = dataUrl.split(',')[1];
+  const res = await fetch('/_write/og-card.png', { method: 'POST', body: b64 });
+  if (!res.ok) throw new Error(await res.text());
+  return res.text();
+}
+window.saveOgCard = save;
+
+document.getElementById('go').addEventListener('click', async () => {
+  status.textContent = 'rendering…';
+  try {
+    status.textContent = await save();
+  } catch (e) {
+    // Not served by tools/serve.mjs — fall back to a plain download.
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png');
+    a.download = 'og-card.png';
+    a.click();
+    status.textContent = 'downloaded (save it to the repository root)';
+  }
+});
+</script>
+</body>
+</html>
