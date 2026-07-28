@@ -3,6 +3,7 @@
 *πολιτεία — regime.*
 
 This is a tool for finding your ideology and values among the Western political tradition.
+The website: https://cisalpiner.github.io/politeia/
 
 **Status: 0.5.0.** Currently, there're two tests: a **long form** (116 items, 91 individual traditions) and a **short form** (36 items, 16 tradition families). 17 dyads (conflicts between positions).
 Take a look at [`docs/METHOD.md`](docs/METHOD.md) for the methodology: the axes, arithmetic, and every neutrality check with criteria.
