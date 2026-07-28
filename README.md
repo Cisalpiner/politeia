@@ -13,9 +13,9 @@ Take a look at [`docs/METHOD.md`](docs/METHOD.md) for the methodology: the axes,
 ## The special thing about it
 
 Every comparable instrument, be it the Political Compass, 8values, SapplyValues, 9axes just share
-three design decisions, and its those decisions that make them pretty boring, pretty cookie-cutter, pretty silly. The likert
+three design decisions, and it's *those* decisions that make them pretty boring, pretty cookie-cutter, pretty silly. The Likert
 agreement on isolated propositions, and the same axes arbitrarily declared by the author and then filled with
-items written to match, and a coordinate as output. Now, we do something a little similar, keeping the familiar input, and putting the innovation in the scoring and presentation.
+items written to match, and a coordinate as output. To be fair, we do something a little similar, keeping the familiar input, and putting the innovation in the scoring and presentation.
 
 - **Conflicts.** There are dyads that detect positions that go against each other
   and put them back to you Socratically.
@@ -32,7 +32,7 @@ requests. The final results are shoved into the URL. Share that to share your re
 
 ## Scope
 
-As is, it's just the Western tradition only, from classical antiquity to the present. Political positions are included on the strength of their influence, not their respectability, and each is
+As is, we currently only have the Western tradition, from classical antiquity to the present. Political positions are included on the strength of their influence, not their respectability, and each is
 stated as its own adherents would state it. Adding non-western ideologies would likely lead it to stray away from abstraction and more toward real events in real life, references to particular systems, etc., which is not the goal.
 
 
