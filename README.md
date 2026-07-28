@@ -16,7 +16,7 @@ three design decisions, and its those decisions that make them pretty boring, pr
 agreement on isolated propositions, and the same axes arbitrarily declared by the author and then filled with
 items written to match, and a coordinate as output. Now, we do something a little similar, keeping the familiar input, and putting the innovation in the scoring and presentation.
 
-- **Conflicts** There are dyads that detect positions that go against each other
+- **Conflicts.** There are dyads that detect positions that go against each other
   and put them back to you Socratically.
 - **Admixture.** Your answers are expressed as a mixture of traditions via constrained
   non-negative least squares, the way population genetics expresses ancestry.
@@ -26,7 +26,7 @@ items written to match, and a coordinate as output. Now, we do something a littl
 
 ## Privacy
 
-Obviously, this is a github site, and we don't call any pictures or custom font sor anything like that. Therefore, none of your info leaves your browser browser. No server, no accounts, no analytics, no third-party
+Obviously, this is a github site, and we don't call any pictures or custom fonts; nothing like that. Therefore, none of your info leaves your browser browser. No server, no accounts, no analytics, no third-party
 requests. The final results are shoved into the URL. Share that to share your results.
 
 ## Scope
