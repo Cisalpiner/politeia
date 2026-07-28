@@ -4,7 +4,7 @@
 
 This is a tool for finding your ideology and values among the Western political tradition.
 
-**Status: 0.5.0.** Currently, there're two test: a **long form** (116 items, 91 individual traditions) and a **short form** (36 items, 16 tradition families). 17 dyads (conflicts between positions).
+**Status: 0.5.0.** Currently, there're two tests: a **long form** (116 items, 91 individual traditions) and a **short form** (36 items, 16 tradition families). 17 dyads (conflicts between positions).
 Take a look at [`docs/METHOD.md`](docs/METHOD.md) for the methodology: the axes, arithmetic, and every neutrality check with criteria.
 
 ---
@@ -26,13 +26,12 @@ items written to match, and a coordinate as output. Now, we do something a littl
 
 ## Privacy
 
-Obviously, this is a github site, and we don't call any pictures or custom fonts; nothing like that. Therefore, none of your info leaves your browser browser. No server, no accounts, no analytics, no third-party
+Obviously, this is a Github site; we don't call any pictures or custom fonts; nothing like that. Therefore, none of your info leaves your browser browser. No server, no accounts, no analytics, no third-party
 requests. The final results are shoved into the URL. Share that to share your results.
 
 ## Scope
 
-It's just Western tradition only, from classical antiquity to the present. Positions are
-included on the strength of their influence, not their respectability, and each is
+As is, it's just the Western tradition only, from classical antiquity to the present. Political positions are included on the strength of their influence, not their respectability, and each is
 stated as its own adherents would state it. Adding non-western ideologies would likely lead it to stray away from abstraction and more toward real events in real life, references to particular systems, etc., which is not the goal.
 
 
