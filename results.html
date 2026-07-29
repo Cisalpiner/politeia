@@ -28,13 +28,49 @@
   </div>
 </header>
 
-<main id="out"></main>
+<main id="out">
+  <!-- Replaced by js/results.js on success. If it is still here, the module never ran —
+       which must never look like an empty page. -->
+  <div class="narrow" id="boot-fallback">
+    <h1>Loading your result…</h1>
+    <p class="small">Everything is computed in your browser, so this needs a little
+    JavaScript to finish. If this message stays put, something failed to load.</p>
+  </div>
+</main>
 
 <footer>
   Politeia · <a href="index.html">About</a> · <a href="quiz.html">Retake</a> ·
   this page made no network requests
 </footer>
 
-<script type="module" src="js/results.js"></script>
+<script type="module">
+// Loaded through a dynamic import rather than src= so that a failure is catchable.
+// The results page pulls a deep module graph — the item bank, the 91-anchor corpus
+// across its era files, families, and the engine — and on a slow or flaky connection
+// one of those can drop. A blank page with no explanation is the worst possible
+// outcome, so: retry once, then say plainly what happened.
+const show = (html) => { document.getElementById('out').innerHTML = html; };
+
+try {
+  await import('./js/results.js');
+} catch (first) {
+  try {
+    await new Promise((r) => setTimeout(r, 400));
+    await import('./js/results.js?retry=1');
+  } catch (second) {
+    show(`<div class="narrow">
+      <h1>Could not load</h1>
+      <p>Part of this page failed to download, so your result could not be computed.
+      Your answers are safe — they are held in the address bar, not on a server, so
+      reloading will try again with nothing lost.</p>
+      <p style="margin-top:var(--s6)">
+        <button class="btn" onclick="location.reload()">Reload</button>
+      </p>
+      <p class="small" style="margin-top:var(--s6)">If it keeps failing:
+      <code>${String(second).slice(0, 160).replace(/</g, '&lt;')}</code></p>
+    </div>`);
+  }
+}
+</script>
 </body>
 </html>

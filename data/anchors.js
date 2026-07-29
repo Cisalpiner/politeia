@@ -17,25 +17,53 @@
 // catches errors here.
 
 import { ITEMS, ITEM_IDS } from './items.js';
-import { CLASSICAL } from './anchors/classical.js';
-import { EARLY_MODERN } from './anchors/early-modern.js';
-import { REVOLUTIONARY } from './anchors/revolutionary.js';
-import { NINETEENTH_LIBERAL } from './anchors/nineteenth-liberal.js';
-import { NINETEENTH_RADICAL } from './anchors/nineteenth-radical.js';
-import { TWENTIETH_A } from './anchors/twentieth-a.js';
-import { TWENTIETH_B } from './anchors/twentieth-b.js';
-import { CONTEMPORARY } from './anchors/contemporary.js';
-import { EXPANSION } from './anchors/expansion.js';
+
+/**
+ * The corpus is split across era files so that any one of them stays small enough to
+ * read and argue with. That means ten requests to assemble it, and on a slow or flaky
+ * connection any single one can drop — which, with plain static imports, takes down the
+ * whole results page and shows the reader nothing.
+ *
+ * So each era file is fetched with a couple of retries and a short backoff. Static
+ * imports cannot be retried; dynamic ones can. Callers are unaffected: top-level await
+ * makes this module async, and anything importing it simply waits.
+ */
+async function loadEra(path, attempts = 3) {
+  let last;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await import(path);
+    } catch (err) {
+      last = err;
+      if (i < attempts - 1) await new Promise((r) => setTimeout(r, 150 * (i + 1)));
+    }
+  }
+  throw new Error(`anchors: could not load ${path} after ${attempts} attempts — ${last?.message ?? last}`);
+}
+
+const [cl, em, rev, nl, nr, ta, tb, con, exp] = await Promise.all([
+  loadEra('./anchors/classical.js'),
+  loadEra('./anchors/early-modern.js'),
+  loadEra('./anchors/revolutionary.js'),
+  loadEra('./anchors/nineteenth-liberal.js'),
+  loadEra('./anchors/nineteenth-radical.js'),
+  loadEra('./anchors/twentieth-a.js'),
+  loadEra('./anchors/twentieth-b.js'),
+  loadEra('./anchors/contemporary.js'),
+  loadEra('./anchors/expansion.js'),
+]);
+
+const EXPANSION = exp.EXPANSION;
 
 const BASE = [
-  ...CLASSICAL,
-  ...EARLY_MODERN,
-  ...REVOLUTIONARY,
-  ...NINETEENTH_LIBERAL,
-  ...NINETEENTH_RADICAL,
-  ...TWENTIETH_A,
-  ...TWENTIETH_B,
-  ...CONTEMPORARY,
+  ...cl.CLASSICAL,
+  ...em.EARLY_MODERN,
+  ...rev.REVOLUTIONARY,
+  ...nl.NINETEENTH_LIBERAL,
+  ...nr.NINETEENTH_RADICAL,
+  ...ta.TWENTIETH_A,
+  ...tb.TWENTIETH_B,
+  ...con.CONTEMPORARY,
 ];
 
 /**
