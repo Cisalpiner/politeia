@@ -4,7 +4,7 @@
 // political grouping, deliberately — a filename that sorted traditions into camps would
 // be an editorial judgement smuggled into the directory listing.
 
-import { prof } from './_prof.js';
+import { prof } from './prof.js';
 
 export const TWENTIETH_A = [
   {

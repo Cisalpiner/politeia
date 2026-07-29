@@ -1,6 +1,6 @@
 // POLITEIA — anchors: Nineteenth Century, liberal and national currents (7)
 
-import { prof } from './_prof.js';
+import { prof } from './prof.js';
 
 export const NINETEENTH_LIBERAL = [
   {

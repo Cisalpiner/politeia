@@ -1,7 +1,7 @@
 // POLITEIA — anchors: Twentieth Century, part B (10)
 // See twentieth-a.js: the A/B split is by file size only and carries no grouping.
 
-import { prof } from './_prof.js';
+import { prof } from './prof.js';
 
 export const TWENTIETH_B = [
   {

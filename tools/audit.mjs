@@ -5,6 +5,7 @@
 //
 //   node tools/audit.mjs
 
+import { readdirSync, existsSync } from 'node:fs';
 import { AXES } from '../data/axes.js';
 import { ITEMS, MIRROR_PAIRS } from '../data/items.js';
 import { DYADS } from '../data/dyads.js';
@@ -148,6 +149,38 @@ console.log('\n9. Anchor documentation');
   if (missing.length) fail('documentation', `missing glossary or sources: ${missing.join(', ')}`);
   else ok('documentation', `${ANCHORS.length} anchors documented with primary sources`);
 }
+
+
+// ---- 10. Deployment hazards ------------------------------------------------------
+// GitHub Pages runs Jekyll unless told not to, and Jekyll silently drops any file or
+// directory whose name begins with an underscore. The file sits in the repository and
+// the build simply refuses to publish it, so everything works locally and 404s in
+// production. That cost us the entire results page once. It is cheap to never repeat.
+console.log('');
+console.log('10. Deployment hazards');
+{
+  const hidden = [];
+  const walk = (dir, prefix = '') => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (e.name === 'node_modules' || e.name.startsWith('.')) continue;
+      const rel = prefix + e.name;
+      if (e.name.startsWith('_')) hidden.push(rel);
+      if (e.isDirectory()) walk(dir + '/' + e.name, rel + '/');
+    }
+  };
+  walk('.');
+  const nojekyll = existsSync('.nojekyll');
+  if (hidden.length && !nojekyll) {
+    fail('jekyll', 'underscore-prefixed paths will 404 on GitHub Pages: ' + hidden.join(', ') + ' - add a .nojekyll file');
+  } else if (hidden.length) {
+    ok('jekyll', hidden.length + ' underscore path(s), but .nojekyll is present');
+  } else if (!nojekyll) {
+    warn('jekyll', 'no .nojekyll file; add one before any underscore-prefixed file appears');
+  } else {
+    ok('jekyll', '.nojekyll present, no underscore-prefixed paths');
+  }
+}
+
 
 console.log(`\n${failures} failure(s), ${warnings} warning(s).\n`);
 process.exit(failures > 0 ? 1 : 0);

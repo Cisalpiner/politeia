@@ -5,7 +5,7 @@
 // display type is a use that a glossary entry summarising a doctrine is not. The
 // doctrines themselves are stated in full.
 
-import { prof } from './_prof.js';
+import { prof } from './prof.js';
 
 export const CONTEMPORARY = [
   {

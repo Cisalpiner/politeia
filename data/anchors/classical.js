@@ -1,6 +1,6 @@
 // POLITEIA — anchors: Classical and Medieval (7)
 
-import { prof } from './_prof.js';
+import { prof } from './prof.js';
 
 export const CLASSICAL = [
   {

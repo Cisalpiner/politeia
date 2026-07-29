@@ -1,6 +1,6 @@
 // POLITEIA — anchors: Nineteenth Century, socialist and anarchist currents (8)
 
-import { prof } from './_prof.js';
+import { prof } from './prof.js';
 
 export const NINETEENTH_RADICAL = [
   {

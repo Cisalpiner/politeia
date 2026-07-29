@@ -1,6 +1,6 @@
 // POLITEIA — anchors: Revolutionary Era (5)
 
-import { prof } from './_prof.js';
+import { prof } from './prof.js';
 
 export const REVOLUTIONARY = [
   {
