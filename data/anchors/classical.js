@@ -5,7 +5,7 @@ import { prof } from './prof.js';
 export const CLASSICAL = [
   {
     id: 'platonic',
-    name: 'Platonic Republicanism',
+    name: 'Platonic Guardianship',
     era: 'Classical',
     figure: {
       name: 'Plato',

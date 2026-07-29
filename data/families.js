@@ -29,7 +29,7 @@ export const FAMILIES = [
     members: ['platonic', 'aristotelian', 'ciceronian', 'stoic', 'epicurean'],
     emblem: 'aristotelian',
     glossary:
-      'Politics is one of the menas by which human beings pursue the good life, and the ' +
+      'Politics is one of the means by which human beings pursue the good life, and the ' +
       'question is which arrangement of rule best forms them for it. Constitutions are ' +
       'judged by whether they serve the common good or the rulers, virtue is a public ' +
       'matter, and reason can, at least, in principle settle what justice requires.',
@@ -61,10 +61,11 @@ export const FAMILIES = [
     members: ['machiavellian', 'hobbesian', 'hamiltonian', 'neoreaction', 'physiocracy', 'public-choice'],
     emblem: 'hobbesian',
     glossary:
-      'Sovereignty is the first political fact and cannot be divided or wished away. ' +
-      'What preserves the state is judged separately from what would be admirable in a ' +
-      'private person; energy, clarity about who actually decides, and the avoidance of ' +
-      'dissolution matter more than the legitimating story told about them.',
+      'Sovereignty is the first political fact, and you cannot divide it or wish it ' +
+      'away. Someone decides. The only real questions are who, and whether anyone is ' +
+      'honest about it. What preserves the state gets judged on its own terms, apart ' +
+      'from what we would admire in a private man, and energy counts for more here than ' +
+      'the story told to justify it.',
   },
   {
     id: 'f-classical-liberal',
@@ -94,10 +95,11 @@ export const FAMILIES = [
     members: ['benthamite', 'rawlsian', 'new-deal', 'georgist', 'saint-simonian', 'third-way', 'longtermism'],
     emblem: 'rawlsian',
     glossary:
-      'Liberal institutions are worth keeping and must be actively corrected to be ' +
-      'worth keeping. Inherited advantage is not desert, markets fail in patterned ways, ' +
-      'and public reason plus competent administration can improve outcomes without ' +
-      'abolishing private life or private property.',
+      'Liberal institutions are worth keeping, and keeping them means correcting them. ' +
+      'Inherited advantage is not the same thing as deserving something, markets fail in ' +
+      'ways we can see coming, and a competent administration working from public ' +
+      'reasons can fix a great deal without ever touching private life or private ' +
+      'property.',
   },
   {
     id: 'f-republican',
@@ -106,8 +108,9 @@ export const FAMILIES = [
     emblem: 'rousseauian',
     glossary:
       'A free people governs itself directly and owes nothing to inherited rank. ' +
-      'Sovereignty rests with citizens assembled, corruption and dependence are the ' +
-      'standing threats, and each generation tries to support it.',
+      'Sovereignty rests with the citizens assembled, and the standing threats are ' +
+      'corruption and dependence. The earth belongs to the living: no generation is ' +
+      'bound by the arrangements of the one before it.',
   },
   {
     id: 'f-state-socialist',
@@ -147,10 +150,10 @@ export const FAMILIES = [
     members: ['burkean', 'neoconservatism', 'communitarianism', 'distributism', 'tory-radicalism'],
     emblem: 'burkean',
     glossary:
-      'Institutions carry accumulated wisdom that no individual reasoner could  supply, ' +
-      'and the self that liberal theory imagines; the unencumbered, choosing his own ends ' +
-      'from nowhere simply does not exist. Reform should be gradual and grounded in what is ' +
-      'already there.',
+      'Institutions carry accumulated wisdom that no individual reasoner could supply, ' +
+      'and the self that liberal theory imagines — the unencumbered one, choosing his own ' +
+      'ends from nowhere — simply does not exist. Reform should be gradual and grounded ' +
+      'in what is already there.',
   },
   {
     id: 'f-national-right',
@@ -191,9 +194,10 @@ export const FAMILIES = [
     members: ['deep-ecology', 'degrowth'],
     emblem: 'deep-ecology',
     glossary:
-      'Nonhuman life has worth in itself rather than as a resource, and the crisis is ' +
-      'not technical but a question of what a civilisation is for. The answers involve ' +
-      'smaller scale, lower throughput, and living within a place rather than upon it.',
+      'Nonhuman life is worth something in itself, and not only for what we can get out ' +
+      'of it. The crisis runs deeper than any technical fix: it is a question about what ' +
+      'a civilisation is even for. Whatever the answer, it involves a smaller scale, less ' +
+      'throughput, and living inside a place instead of on top of it.',
   },
 ];
 

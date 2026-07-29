@@ -75,7 +75,8 @@ function render(responses, stars, short = false) {
   // ---- 1. Values --------------------------------------------------------------
   html.push(`<div class="narrow"><h1>Your result</h1></div>
   <section class="section"><h2>Values</h2>
-    <p class="small narrow">Five axes, scored from &minus;100 to +100.</p>
+    <p class="small narrow">Five axes, each scored from &minus;100 to +100. The further
+    out you sit, the harder you lean.</p>
     ${LAYER(1).map((a) => axisRow(a, scores[a.id])).join('')}</section>`);
 
   // ---- 2. The verdict ---------------------------------------------------------
@@ -112,9 +113,9 @@ function render(responses, stars, short = false) {
 
   // ---- 3. Temperament ---------------------------------------------------------
   html.push(`<section class="section"><h2>Temperament</h2>
-    <p class="small narrow">Not what you believe, although how you would pursue it. This is a
-    separate thing because these dispositions cut across the value axes. You can be a
-    revolutionary anything.</p>
+    <p class="small narrow">This is about how you would go about it, which is a separate
+    question from what you want. It gets its own section because these run clean across
+    everything above. You can be a revolutionary anything.</p>
     ${LAYER(2).map((a) => axisRow(a, scores[a.id])).join('')}
     ${LAYER(3).map((a) => axisRow(a, scores[a.id])).join('')}</section>`);
 
@@ -137,9 +138,10 @@ function render(responses, stars, short = false) {
           .join('')}
         ${mix.other > 0 ? `<tr><td><span class="swatch" style="background:#cfc5b4"></span>Other ${noun}, each below 3%</td><td class="era">—</td><td class="num">${pct(mix.other)}</td></tr>` : ''}
         </tbody></table></div>
-      <p class="small">Fit: ${pct(mix.fit)} of the variation in your answers is explained
-      by this mixture, relative to a flat average of the candidate traditions. A low fit
-      means you do not sit neatly inside any combination of them.</p>
+      <p class="small">Fit: ${pct(mix.fit)}. That is how much of the variation in your
+      answers this blend explains, measured against a flat average of the candidates. A
+      low number means you do not sit neatly inside any combination of them, which is
+      worth knowing on its own.</p>
     </section>`);
   }
 
@@ -162,8 +164,8 @@ function render(responses, stars, short = false) {
   // ---- 6. Most unusual --------------------------------------------------------
   if (odd) {
     html.push(`<section class="section"><h2>Your most unusual commitment</h2>
-      <p class="narrow">Relative to <b>${esc(top.name)}</b>, the tradition you most
-      resemble, this is where you diverge furthest:</p>
+      <p class="narrow">Set against <b>${esc(top.name)}</b>, the tradition you most
+      resemble, this is where you part company with it most sharply:</p>
       <div class="finding"><div class="tension">“${esc(odd.item.text)}”</div>
       <p class="small">You answered ${odd.theirs > 0 ? '+' : ''}${odd.theirs};
       that tradition would answer ${odd.anchors > 0 ? '+' : ''}${odd.anchors}.</p></div>
@@ -185,7 +187,7 @@ function render(responses, stars, short = false) {
                 <div class="question">${esc(f.dyad.question)}</div></div>`
             )
             .join('')
-        : '<p class="narrow">No authored tension fired on your answers. That is not a certificate of coherence — it means none of the specific pairs this instrument tests for came up.</p>'
+        : '<p class="narrow">Nothing fired. Do not read that as a clean bill of health. It only means none of the particular pairs this instrument watches for turned up in your answers.</p>'
     }</section>`);
 
   // ---- 8. Response character --------------------------------------------------
@@ -200,17 +202,17 @@ function render(responses, stars, short = false) {
               : 'You tended to disagree with statements as presented. Your scores were corrected upward for this.'
         }</td></tr>
       <tr><td>Abstention</td><td class="num">${pct(abstain)}</td>
-        <td class="small">Items you declined. These were excluded rather than scored as neutral.</td></tr>
+        <td class="small">Items you passed on. They were left out of the scoring rather than counted as a zero, which is a different thing.</td></tr>
     </tbody></table></div></section>`);
 
   // ---- 9. Glossary ------------------------------------------------------------
   const named = [...new Set([...mix.weights.map((w) => w.anchor), ...neighbours.slice(0, 5).map((n) => n.anchor)])];
   if (short) {
     html.push(`<section class="section"><h2>Go further</h2>
-      <p class="narrow">This was the short form: 36 statements, placing you among 16
-      families. The long form asks all 95 and places you among <b>63 individual
-      traditions</b>. It's the difference between "Anarchism" and knowing whether you are
-      nearer Proudhon, Bakunin, or Kropotkin.</p>
+      <p class="narrow">That was the short form: 36 statements, sorting you into one of 16
+      families. The long form asks all 116 and sorts you among <b>91 individual
+      traditions</b>. It's the difference between landing on "Anarchism" and finding out
+      whether you are closer to Proudhon, Bakunin, or Kropotkin.</p>
       <p style="margin-top:var(--s5)"><a class="btn" href="quiz.html" style="text-decoration:none">Take the long form →</a></p>
     </section>`);
   }

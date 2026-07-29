@@ -7,7 +7,7 @@ const BLOCK = 5;
 const MAX_STARS = 5;
 
 // the form that's being taken. The short form asks a 36-item subset and places the
-// respondent among tradition FAMILIES; the long form asks all 95 and places them among
+// respondent among tradition FAMILIES; the long form asks all 116 and places them among
 // individual ideologies instead
 const SHORT = new URLSearchParams(location.search).get('form') === 'short';
 const MODE = SHORT ? MODE_SHORT : MODE_LONG;

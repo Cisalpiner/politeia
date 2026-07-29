@@ -12,7 +12,7 @@
 //   then          star bitmask, 1 bit per item
 //
 // Only the items belonging to the mode are packed, so a short result stays short:
-// 34 items is ~24 characters, 95 items is 66.
+// 36 items is ~27 characters, 116 items is 80.
 //
 // A DECODED SHORT RESULT IS A FULL-LENGTH VECTOR. Items outside the short subset come
 // back as 'nv' — genuinely no data, which is exactly what they are. Everything
